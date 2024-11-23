@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Vogais</title>
+    <style>
+        /* Estilos gerais da página */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #3b3b3b;
+        }
+
+        input[type="text"] {
+            font-size: 1.1rem;
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .count {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Contador de Vogais</h1>
+        <p>Digite uma frase abaixo para contar o número de vogais:</p>
+
+        <input type="text" id="entradaFrase" placeholder="Digite sua frase aqui...">
+
+        <button onclick="contarVogais()">Contar Vogais</button>
+
+        <div class="count" id="resultado"></div>
+    </div>
+
+    <script>
+        // Função que conta o número de vogais na frase inserida
+        function contarVogais() {
+            const frase = document.getElementById("entradaFrase").value;  // Obtém a frase digitada pelo usuário
+            const vogais = ['a', 'e', 'i', 'o', 'u', 'á', 'é', 'í', 'ó', 'ú', 'ã', 'õ'];
+            let contador = 0;
+
+            // Verifica se a frase está vazia
+            if (frase.trim() === "") {
+                document.getElementById("resultado").textContent = "Por favor, insira uma frase!";
+                return;
+            }
+
+            // Percorre cada caractere da frase e conta as vogais
+            for (let i = 0; i < frase.length; i++) {
+                let letra = frase[i].toLowerCase();  // Converte para minúscula para garantir que a comparação seja insensível ao caso
+                if (vogais.includes(letra)) {
+                    contador++;
+                }
+            }
+
+            // Exibe o número de vogais encontrado
+            document.getElementById("resultado").textContent = `Número de vogais: ${contador}`;
+        }
+    </script>
+
+</body>
+</html>

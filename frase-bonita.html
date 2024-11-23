@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frase Motivacional</title>
+    <style>
+        /* Estilos gerais da página */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #f06, #f79);
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin: 20px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        button {
+            background-color: #f79;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #f06;
+        }
+
+        /* Estilo para a animação do botão */
+        button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <h1>Frase Motivacional do Dia</h1>
+    <p id="frase">Clique no botão para ver a frase motivacional!</p>
+    <button onclick="mostrarFrase()">Mostrar Frase</button>
+
+    <script>
+        // Função JavaScript com as frases motivacionais
+        function obterFraseMotivacional() {
+            const frases = [
+                "O único modo de fazer um excelente trabalho é amar o que você faz.",
+                "O sucesso é a soma de pequenos esforços repetidos dia após dia.",
+                "Não espere por uma oportunidade, crie você mesmo as suas.",
+                "Acredite em você e tudo será possível.",
+                "O futuro pertence àqueles que acreditam na beleza de seus sonhos.",
+                "Grandes coisas nunca vêm de zonas de conforto.",
+                "A perseverança é o caminho para o sucesso.",
+                "Você é mais forte do que imagina.",
+                "Não importa o quão devagar você vá, desde que não pare.",
+                "Acredite em si mesmo e chegará mais longe do que imagina."
+            ];
+
+            // Gera um índice aleatório dentro do intervalo da lista
+            const indiceAleatorio = Math.floor(Math.random() * frases.length);
+            
+            // Retorna a frase correspondente ao índice aleatório
+            return frases[indiceAleatorio];
+        }
+
+        // Função que mostra a frase motivacional no parágrafo
+        function mostrarFrase() {
+            // Obtemos a frase aleatória
+            const frase = obterFraseMotivacional();
+            // Mostramos a frase no elemento com id "frase"
+            document.getElementById("frase").textContent = frase;
+        }
+    </script>
+</body>
+</html>

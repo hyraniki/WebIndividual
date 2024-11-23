@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Combinador de Letras</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #f0f8ff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+    h1 {
+      color: #333;
+    }
+    .input-container {
+      margin-bottom: 20px;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-right: 5px;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      color: white;
+      background-color: #007BFF;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .output {
+      margin-top: 20px;
+      padding: 15px;
+      border: 2px solid #007BFF;
+      border-radius: 10px;
+      background-color: #e6f7ff;
+      width: 80%;
+      max-width: 600px;
+      text-align: center;
+      color: #333;
+    }
+    .combination {
+      display: inline-block;
+      margin: 5px;
+      padding: 5px 10px;
+      background-color: #007BFF;
+      color: white;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Combinador de Letras</h1>
+  <div class="input-container">
+    <input type="text" id="lettersInput" placeholder="Digite 3 letras" maxlength="3">
+    <button onclick="showCombinations()">Gerar Combinações</button>
+  </div>
+  <div class="output" id="outputContainer">As combinações aparecerão aqui.</div>
+
+  <script>
+    function getCombinations(letters) {
+      if (letters.length !== 3) {
+        alert("Por favor, digite exatamente 3 letras.");
+        return [];
+      }
+
+      const permute = (arr, m = []) => {
+        if (arr.length === 0) {
+          return [m.join('')];
+        }
+        return arr.flatMap((_, i) => {
+          const rest = arr.slice(0, i).concat(arr.slice(i + 1));
+          return permute(rest, m.concat(arr[i]));
+        });
+      };
+
+      return [...new Set(permute(letters))];
+    }
+
+    function showCombinations() {
+      const input = document.getElementById('lettersInput').value;
+      const outputContainer = document.getElementById('outputContainer');
+      outputContainer.innerHTML = ''; // Limpa o conteúdo anterior
+
+      if (input.length !== 3) {
+        outputContainer.textContent = 'Por favor, digite exatamente 3 letras.';
+        return;
+      }
+
+      const combinations = getCombinations(input.split(''));
+
+      if (combinations.length > 0) {
+        combinations.forEach(combination => {
+          const combinationElement = document.createElement('div');
+          combinationElement.classList.add('combination');
+          combinationElement.textContent = combination;
+          outputContainer.appendChild(combinationElement);
+        });
+      }
+    }
+  </script>
+</body>
+</html>

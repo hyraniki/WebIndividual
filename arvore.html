@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Árvore com Maçãs</title>
+  <style>
+    body {
+      background-color: #87CEEB;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .tree {
+      width: 300px;
+      height: 400px;
+      background-color: #3B5323;
+      position: relative;
+      border-radius: 50% 50% 0 0;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+    .tree-trunk {
+      width: 60px;
+      height: 150px;
+      background-color: #8B4513;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 10px;
+    }
+    .apple {
+      width: 30px;
+      height: 30px;
+      background-color: #FF0000;
+      border: 2px solid #8B0000;
+      border-radius: 50%;
+      position: absolute;
+      cursor: pointer;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+    .apple:hover {
+      transform: scale(1.1);
+      transition: transform 0.2s;
+    }
+  </style>
+</head>
+<body>
+  <div class="tree" id="tree">
+    <div class="tree-trunk"></div>
+    <div class="apple" style="top: 50px; left: 60px;"></div>
+    <div class="apple" style="top: 100px; left: 120px;"></div>
+    <div class="apple" style="top: 150px; left: 90px;"></div>
+    <div class="apple" style="top: 200px; left: 140px;"></div>
+    <div class="apple" style="top: 250px; left: 80px;"></div>
+  </div>
+
+  <script>
+    // Função para remover a maçã ao clicar
+    document.querySelectorAll('.apple').forEach(function(apple) {
+      apple.addEventListener('click', function() {
+        apple.remove();
+      });
+    });
+  </script>
+</body>
+</html>
